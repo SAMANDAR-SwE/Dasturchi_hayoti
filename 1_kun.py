@@ -41,6 +41,12 @@ for kategoriya in mahsulotlar[nima_olmoqchisiz]:
     print(f"Nomi: {kategoriya["Nomi"]}, Narxi: {kategoriya["narxi"]} so'm")
 hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
 narxs = float(input("Necha kg kerak: "))
-for kategoriya in mahsulotlar[nima_olmoqchisiz]:
-    if kategoriya["Nomi"] == hisoblash:
-        print(kategoriya["narxi"]*narxs)
+def soni_3_ga_bolish(son):
+    return f"{round(son, 2):,.2f}".replace(",", " ")
+
+def narxni_hisoblash(narx, nima, kategorya):
+    for kategoriya in mahsulotlar[kategorya]:
+        if kategoriya["Nomi"] == nima:
+            return f"{soni_3_ga_bolish(son=kategoriya["narxi"]*narx)} so'm boladi."
+
+print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
