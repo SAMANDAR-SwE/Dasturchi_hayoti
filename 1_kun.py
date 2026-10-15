@@ -45,15 +45,39 @@ def narxni_hisoblash(narx, nima, kategorya):
             return f"{soni_3_ga_bolish(son=kategoriya["narxi"]*narx)} so'm boladi."
 
 
+# while True:
+    # nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
+    # if nima_olmoqchisiz =="":
+        # break
+    # print(f"{nima_olmoqchisiz} maxsulotlarimiz.")
+    # for kategoriya in mahsulotlar[nima_olmoqchisiz]:
+        # print(f"Nomi: {kategoriya["Nomi"]}, Narxi: {kategoriya["narxi"]} so'm")
+    # hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
+    # narxs = float(input("Necha kg kerak: "))
+    # print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
+# 
+def mahsulotni_chiqarish(kategorya):
+    print(f"{kategorya} maxsulotlarimiz.")
+    for m in mahsulotlar[kategorya]:
+        print(f"Nomi: {m["Nomi"]}, Narxi: {m["narxi"]} so'm")
+ 
+
 while True:
-    nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
-    if nima_olmoqchisiz =="":
+    print("\n1. Mahsulotlarni ko'rish")
+    print("2. Narx hisoblash")
+    print("0. Chiqish")
+    tanlov = input("Tanlang: ")
+
+    if tanlov == "0":
         break
-    print(f"{nima_olmoqchisiz} maxsulotlarimiz.")
-    for kategoriya in mahsulotlar[nima_olmoqchisiz]:
-        print(f"Nomi: {kategoriya["Nomi"]}, Narxi: {kategoriya["narxi"]} so'm")
-    hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
-    narxs = float(input("Necha kg kerak: "))
-    print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
-
-
+    elif tanlov == "1":
+        nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
+        mahsulotni_chiqarish(nima_olmoqchisiz)
+    elif tanlov == "2":
+        nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
+        mahsulotni_chiqarish(nima_olmoqchisiz)
+        hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
+        narxs = float(input("Necha kg kerak: "))
+        print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
+    else:
+        print("Noto'g'ri tanlov")
