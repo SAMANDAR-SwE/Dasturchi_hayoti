@@ -56,11 +56,12 @@ def narxni_hisoblash(narx, nima, kategorya):
     # narxs = float(input("Necha kg kerak: "))
     # print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
 # 
-def mahsulotni_chiqarish(kategorya):
-    print(f"{kategorya} maxsulotlarimiz.")
-    for m in mahsulotlar[kategorya]:
+def mahsulotni_chiqarish():
+    kategoriya = input("Kategoriya (mevalar, sabzavot, poliz ekinlari): ")
+    print(f"{kategoriya} maxsulotlarimiz.")
+    for m in mahsulotlar[kategoriya]:
         print(f"Nomi: {m["Nomi"]}, Narxi: {m["narxi"]} so'm")
- 
+    return kategoriya      # <-- shu qator kerak
 
 while True:
     print("\n1. Mahsulotlarni ko'rish")
@@ -71,11 +72,9 @@ while True:
     if tanlov == "0":
         break
     elif tanlov == "1":
-        nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
-        mahsulotni_chiqarish(nima_olmoqchisiz)
+        mahsulotni_chiqarish()
     elif tanlov == "2":
-        nima_olmoqchisiz = input("Kategoriya (mevalar, sabzavot, poliz ekinlari), chiqish uchun Enter: ")
-        mahsulotni_chiqarish(nima_olmoqchisiz)
+        nima_olmoqchisiz = mahsulotni_chiqarish()
         hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
         narxs = float(input("Necha kg kerak: "))
         print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
