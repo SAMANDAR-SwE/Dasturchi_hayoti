@@ -44,14 +44,19 @@ def narxni_hisoblash(narx, nima, kategorya):
         if kategoriya["Nomi"] == nima:
             return f"{soni_3_ga_bolish(son=kategoriya["narxi"]*narx)} so'm boladi."
 
-
+    return "Topilmadi"
 
 def mahsulotni_chiqarish():
-    kategoriya = input("Kategoriya (mevalar, sabzavot, poliz ekinlari): ")
-    print(f"{kategoriya} maxsulotlarimiz.")
-    for m in mahsulotlar[kategoriya]:
-        print(f"Nomi: {m["Nomi"]}, Narxi: {m["narxi"]} so'm")
-    return kategoriya     
+    try:
+        kategoriya = input("Kategoriya (mevalar, sabzavot, poliz ekinlari): ")
+        print(f"{kategoriya} maxsulotlarimiz.")
+        for m in mahsulotlar[kategoriya]:
+            print(f"Nomi: {m["Nomi"]}, Narxi: {m["narxi"]} so'm")
+        return kategoriya   
+    except KeyError:
+        print("No to'g'ri kategorya.")
+
+
 
 while True:
     print("\n1. Mahsulotlarni ko'rish")
@@ -65,8 +70,16 @@ while True:
         mahsulotni_chiqarish()
     elif tanlov == "2":
         nima_olmoqchisiz = mahsulotni_chiqarish()
-        hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
-        narxs = float(input("Necha kg kerak: "))
-        print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
+        if nima_olmoqchisiz is None:
+            continue
+        try:
+            hisoblash = str(input("Nima olmoqchi bo'lsangi yozing:"))
+        except:
+            print("No to'g'ri ma'lumot.")
+        try:
+            narxs = float(input("Necha kg kerak: "))
+            print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
+        except ValueError:
+            print("Xatto ma'lumot kirizdingiz.")
     else:
         print("Noto'g'ri tanlov")
