@@ -16,6 +16,9 @@ def main():
             host=os.getenv("DB_HOST"),
             port=os.getenv("DB_PORT")
         )
+        with connection.cursor() as cursor:
+            cursor.execute("SELECT version();")
+            print(cursor.fetchone())
 
         cursor = connection.cursor()
 
@@ -38,7 +41,8 @@ def main():
     # Erorr code
     except (Exception, psycopg2.Error) as error:
         print("Xatolik yuz berdi:", error)
-    
+        if connection:
+            connection.rollback()
     
     # Connection STOP
     finally:
@@ -46,4 +50,7 @@ def main():
             cursor.close()
             connection.close()
             print("\nPostgreSQL ulanishi yopildi.")
-    
+
+
+if __name__ == "__main__":
+    main()
