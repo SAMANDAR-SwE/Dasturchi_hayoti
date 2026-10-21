@@ -124,7 +124,24 @@ while True:
                     json.dump(mahsulotlar, f, ensure_ascii=False, indent=2)
                 print("Qo'shildi.")
             elif savat_tanlov == "2":
-                print("savatni ko'rish tanlandi")       # keyin to'ldiramiz
+                try:
+                    with open("test.json", "r", encoding="utf-8") as f:
+                        data = json.load(f)
+
+                    print("\n--- SAVATDAGI BARCHA MAHSULOTLAR ---")
+                    for kat_nomi, elementlar in data.items():
+                        print(f"\n--- {kat_nomi.upper()} ---")
+                        for mahsulot in elementlar:
+                            print(
+                                f"Nomi: {mahsulot['Nomi']}, "
+                                f"Narxi: {mahsulot['narxi']} so'm, "
+                                f"Muddati: {mahsulot['yaroqlilik muddati']}, "
+                                f"Miqdori: {mahsulot['miqdori']}"
+                            )
+                except FileNotFoundError:
+                    print("Fayl topilmadi.")
+                            
+
             elif savat_tanlov == "3":
                 # savat.clear()
                 print("Savat tozalandi")
