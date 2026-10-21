@@ -74,6 +74,7 @@ def mahsulotni_chiqarish():
 while True:
     print("\n1. Mahsulotlarni ko'rish")
     print("2. Narx hisoblash")
+    print("3 Savat")
     print("0. Chiqish")
     tanlov = input("Tanlang: ")
 
@@ -94,5 +95,40 @@ while True:
             print(narxni_hisoblash(narx=narxs, nima=hisoblash, kategorya=nima_olmoqchisiz))
         except ValueError:
             print("Xatto ma'lumot kirizdingiz.")
+    elif tanlov == "3":
+        while True:
+            print("\n--- SAVAT ---")
+            print("1. Savatga qo'shish")
+            print("2. Savatni ko'rish")
+            print("3. Savatni tozalash")
+            print("0. Orqaga")
+            savat_tanlov = input("Tanlang: ")
+            
+            if savat_tanlov == "0":
+                break
+            elif savat_tanlov == "1":
+                kategoriya = input("Kategoriya: ").strip()
+                nomi = input("Nomi: ").strip()
+                try:
+                    kg = float(input("Necha kg: "))
+                    narxi = float(input("Narxi: "))
+                except ValueError:
+                    print("Son kiriting.")
+                    continue
+                yaroq = input("Yaroqlilik muddati: ").strip()
+            
+                mahsulot = {"Nomi": nomi, "narxi": narxi, "yaroqlilik muddati": yaroq, "miqdori": kg}
+                mahsulotlar.setdefault(kategoriya, []).append(mahsulot)
+            
+                with open("test.json", "w", encoding="utf-8") as f:
+                    json.dump(mahsulotlar, f, ensure_ascii=False, indent=2)
+                print("Qo'shildi.")
+            elif savat_tanlov == "2":
+                print("savatni ko'rish tanlandi")       # keyin to'ldiramiz
+            elif savat_tanlov == "3":
+                # savat.clear()
+                print("Savat tozalandi")
+            else:
+                print("Noto'g'ri tanlov")
     else:
         print("Noto'g'ri tanlov")
