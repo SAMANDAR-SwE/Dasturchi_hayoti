@@ -94,9 +94,3 @@ class Talaba:
         print(f"O'rtacha bahosi: {self.ortacha()}")
 
 
-# Sinov
-t = Talaba("Ali", 20)
-t.baho_qosh(4)
-t.baho_qosh(5)
-t.baho_qosh(3)
-t.malumot()
