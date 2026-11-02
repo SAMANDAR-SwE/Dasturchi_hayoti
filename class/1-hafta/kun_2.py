@@ -57,34 +57,54 @@
 # print(h.kor())   # 0
 
 
-# class Mahsulot:
-#     def __init__(self, nom, narx):
-#         self.nom = nom
-#         self.narx = narx
+class Mahsulot:
+    def __init__(self, nom, narx):
+        self.nom = nom
+        self.narx = narx
     
-#     def __str__(self):
-#         return f"{self.nom} - {self.narx} so'm"
+    def __str__(self):
+        return f"{self.nom} - {self.narx} so'm"
+
+
     
-# #     def malumot(self):
-#         # print(f"{self.nom} - {self.narx} so'm")
-
-
-# class Savat:
-#     def __init__(self):
-#         self.mahsumotlar = []
-
-#     def qosh(self, mahsulot):
-#         self.mahsumotlar.append(mahsulot)
-
-#     def jami(self):
-#         jami_narx = 0
-#         for m in self.mahsumotlar:
-#             jami_narx += m.narx
-#         return jami_narx
-
 #     def malumot(self):
-#         for m in self.mahsumotlar:
-#             print(m)
+        # print(f"{self.nom} - {self.narx} so'm")
+
+
+class Savat:
+    def __init__(self):
+        self.mahsumotlar = []
+
+    
+        
+    def qosh(self, mahsulot):
+        self.mahsumotlar.append(mahsulot)
+
+    def jami(self):
+        jami_narx = 0
+        for m in self.mahsumotlar:
+            jami_narx += m.narx
+        return jami_narx
+
+    def malumot(self):
+        for m in self.mahsumotlar:
+            print(m)
+
+    def __str__(self):
+        return f"Savat: {len(self.mahsumotlar)} ta mahsulot, jami: {self.jami()} so'm"
+
+    def __repr__(self):
+        return f"Savat({len(self.mahsumotlar)} ta mahsulot)"
+
+
+s = Savat()
+s.qosh(Mahsulot("Non", 5000))
+s.qosh(Mahsulot("Sut", 12000))
+s.qosh(Mahsulot("Olma", 8000))
+
+print(s)          # Savat: 3 ta mahsulot, jami: 25000 so'm
+print(repr(s))    # Savat(3 ta mahsulot)
+print([s])        # [Savat(3 ta mahsulot)]
 
 
 # m1 = Mahsulot("Non", 5000)
@@ -99,52 +119,52 @@
 # print(s.jami())   # 25000
 # s.malumot()
 
-from kun_1 import Talaba
+# from kun_1 import Talaba
 
-class Guruh:
-    def __init__(self, nom):
-        self.nom = nom
-        self.talabalar = []
+# class Guruh:
+#     def __init__(self, nom):
+#         self.nom = nom
+#         self.talabalar = []
 
-    def talaba_qosh(self, talaba):
-        self.talabalar.append(talaba)
+#     def talaba_qosh(self, talaba):
+#         self.talabalar.append(talaba)
 
-    def ortacha(self):
-        if not self.talabalar:
-            return 0 
-        jami = 0
-        for i in self.talabalar:
-            jami += i.ortacha()
-        return jami / len(self.talabalar)
+#     def ortacha(self):
+#         if not self.talabalar:
+#             return 0 
+#         jami = 0
+#         for i in self.talabalar:
+#             jami += i.ortacha()
+#         return jami / len(self.talabalar)
     
-    def eng_yaxshi(self):
-        if not self.talabalar:
-            return 0 
-        yaxsi = self.talabalar[0]
-        for i in self.talabalar:
-            if i.ortacha() > yaxsi.ortacha():
-                yaxsi = i
-        return yaxsi.ism
+#     def eng_yaxshi(self):
+#         if not self.talabalar:
+#             return 0 
+#         yaxsi = self.talabalar[0]
+#         for i in self.talabalar:
+#             if i.ortacha() > yaxsi.ortacha():
+#                 yaxsi = i
+#         return yaxsi.ism
     
 
 
-# Talaba ni tekshirish
-t1 = Talaba("Ali", 20)
-t1.baho_qosh(5)
-t1.baho_qosh(5)
+# # Talaba ni tekshirish
+# t1 = Talaba("Ali", 20)
+# t1.baho_qosh(5)
+# t1.baho_qosh(5)
 
-# print(t1.ism)          # Ali
-# print(t1.yosh)         # 20
-# print(t1.baholar)      # [5, 5]
-# print(t1.ortacha())    # 5.0
-# t1.malumot()           # Ism: Ali ...
+# # print(t1.ism)          # Ali
+# # print(t1.yosh)         # 20
+# # print(t1.baholar)      # [5, 5]
+# # print(t1.ortacha())    # 5.0
+# # t1.malumot()           # Ism: Ali ...
 
 
-# Guruh ni tekshirish
-g = Guruh("101-guruh")
-g.talaba_qosh(t1)
+# # Guruh ni tekshirish
+# g = Guruh("101-guruh")
+# g.talaba_qosh(t1)
 
-# print(g.nom)           # 101-guruh
-# print(len(g.talabalar)) # 1
-# print(g.ortacha())     # 5.0
-print(g.eng_yaxshi())  # Ali
+# # print(g.nom)           # 101-guruh
+# # print(len(g.talabalar)) # 1
+# # print(g.ortacha())     # 5.0
+# print(g.eng_yaxshi())  # Ali
