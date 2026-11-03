@@ -7,7 +7,7 @@ class Talaba:
         return f"{self.ism} ({self.yosh} yosh)"
 
     def __repr__(self):
-        return f"{self.ism} , {self.yosh}"
+        return f"Talaba('{self.ism}', {self.yosh})"   # ← class nomi bor
     
     def baho_qosh(self, baho):
         self.baholar.append(baho)
@@ -24,7 +24,11 @@ class Talaba:
     def malumot(self):
         print(f"{self.ism} - {self.yosh} {self.ortacha()}")
 
+    def __eq__(self, value):
+        return self.ism == value.ism and self.yosh == value.yosh
 
+    def __lt__(self, other):
+        return self.ortacha() < other.ortacha()
 
 
 class Guruh:
@@ -39,21 +43,19 @@ class Guruh:
         self.talabalar.append(talaba)
 
     def ortacha(self):
+        if not self.talabalar:
+            return 0
         gurux_ortacha = 0 
         for t in self.talabalar:
             gurux_ortacha += t.ortacha()
         return gurux_ortacha / len(self.talabalar)
 
     def eng_yaxshi(self):
+        if not self.talabalar:
+            return None
         eng_yaxshi_1 = self.talabalar[0]
         for i in self.talabalar:
             if eng_yaxshi_1.ortacha() < i.ortacha():
                 eng_yaxshi_1 = i
         return eng_yaxshi_1.ism
 
-
-g = Guruh("101-guruh")
-g.talaba_qosh(Talaba("Ali", 20))
-g.talaba_qosh(Talaba("Vali", 22))
-
-print(g)   # 101-guruh (2 ta talaba)

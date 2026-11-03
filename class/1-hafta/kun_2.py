@@ -65,7 +65,9 @@ class Mahsulot:
     def __str__(self):
         return f"{self.nom} - {self.narx} so'm"
 
-
+    def __eq__(self, value):
+        return self.narx == value.narx
+    
     
 #     def malumot(self):
         # print(f"{self.nom} - {self.narx} so'm")
@@ -97,27 +99,7 @@ class Savat:
         return f"Savat({len(self.mahsumotlar)} ta mahsulot)"
 
 
-s = Savat()
-s.qosh(Mahsulot("Non", 5000))
-s.qosh(Mahsulot("Sut", 12000))
-s.qosh(Mahsulot("Olma", 8000))
 
-print(s)          # Savat: 3 ta mahsulot, jami: 25000 so'm
-print(repr(s))    # Savat(3 ta mahsulot)
-print([s])        # [Savat(3 ta mahsulot)]
-
-
-# m1 = Mahsulot("Non", 5000)
-# m2 = Mahsulot("Sut", 12000)
-# m3 = Mahsulot("Olma", 8000)
-
-# s = Savat()
-# s.qosh(m1)
-# s.qosh(m2)
-# s.qosh(m3)
-
-# print(s.jami())   # 25000
-# s.malumot()
 
 # from kun_1 import Talaba
 
