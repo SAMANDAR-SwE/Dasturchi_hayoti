@@ -67,8 +67,17 @@ class Mahsulot:
 
     def __eq__(self, value):
         return self.narx == value.narx
-    
-    
+
+    @property
+    def narx(self):
+        return self._narx
+
+    @narx.setter
+    def narx(self, qiymat):
+        if qiymat < 0:
+            raise ValueError("Narx manfiy bo'lmaydi")
+        self._narx = qiymat
+
 #     def malumot(self):
         # print(f"{self.nom} - {self.narx} so'm")
 
@@ -81,7 +90,8 @@ class Savat:
         
     def qosh(self, mahsulot):
         self.mahsumotlar.append(mahsulot)
-
+    
+    @property
     def jami(self):
         jami_narx = 0
         for m in self.mahsumotlar:
@@ -93,12 +103,11 @@ class Savat:
             print(m)
 
     def __str__(self):
-        return f"Savat: {len(self.mahsumotlar)} ta mahsulot, jami: {self.jami()} so'm"
+        return f"Savat: {len(self.mahsumotlar)} ta mahsulot, jami: {self.jami} so'm"
 
     def __repr__(self):
         return f"Savat({len(self.mahsumotlar)} ta mahsulot)"
-
-
+    
 
 
 # from kun_1 import Talaba

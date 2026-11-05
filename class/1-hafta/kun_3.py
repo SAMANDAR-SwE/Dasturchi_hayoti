@@ -30,6 +30,16 @@ class Talaba:
     def __lt__(self, other):
         return self.ortacha() < other.ortacha()
 
+    @property
+    def yosh(self):
+        return self._yosh
+    
+    @yosh.setter
+    def yosh(self, qiymat):
+        if not(0 < qiymat <= 120):
+            raise ValueError("Yosh 0 dan katta, 120 dan kichik bo'lishi kerak")
+        self._yosh = qiymat
+
 
 class Guruh:
     def __init__(self, nom):
