@@ -37,11 +37,17 @@ class Savat:
 
     def __len__(self):
         return len(self.royxat)
-    
+
+    def __str__(self):
+        qatorlar = []
+        for mahsulot, kg in self.royxat:
+            qatorlar.append(f"{mahsulot.nomi} - {mahsulot.narxi} so'm x {kg} kg = {mahsulot.narx_hisobla(kg)} ")
+        qatorlar.append(f"Jami: {self.jami()} so'm")
+        return "\n".join(qatorlar)
+
+        
 olma = Mahsulot("olma", 30000, 12)
 savat = Savat()
 savat.qosh(olma, 2)
 savat.qosh(Mahsulot("limon", 25000, 8), 1)
-print(len(savat))     # 2
-savat.clear()
-print(len(savat))     # 0
+print(savat)     # 2
