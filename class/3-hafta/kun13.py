@@ -30,7 +30,7 @@ class Savat:
         jami = 0
         for mahsulot, kg in self.royxat:
             jami += mahsulot.narx_hisobla(kg)
-        return jami
+        return f"{jami}"
 
     def clear(self):
         self.royxat.clear()
@@ -41,13 +41,8 @@ class Savat:
     def __str__(self):
         qatorlar = []
         for mahsulot, kg in self.royxat:
-            qatorlar.append(f"{mahsulot.nomi} - {mahsulot.narxi} so'm x {kg} kg = {mahsulot.narx_hisobla(kg)} ")
+            qatorlar.append(f"{mahsulot.nomi} - {mahsulot.narxi} so'm x {kg} kg = {mahsulot.narx_hisobla(kg)} so'm")
         qatorlar.append(f"Jami: {self.jami()} so'm")
         return "\n".join(qatorlar)
 
         
-olma = Mahsulot("olma", 30000, 12)
-savat = Savat()
-savat.qosh(olma, 2)
-savat.qosh(Mahsulot("limon", 25000, 8), 1)
-print(savat)     # 2
