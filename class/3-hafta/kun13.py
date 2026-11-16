@@ -7,9 +7,7 @@ class Mahsulot(ABC):
     def __str__(self):
         return f"{self.nomi} - {self.narxi} so'm ({self.midori} dona)"
     
-    @abstractmethod
-    def tavsif(self):
-        ...
+    
     
     def narx_hisobla(self,kg):
         return self.narxi * kg
@@ -37,7 +35,7 @@ class Savat:
         jami = 0
         for mahsulot, kg in self.royxat:
             jami += mahsulot.narx_hisobla(kg)
-        return f"{jami}"
+        return jami
 
     def clear(self):
         self.royxat.clear()
