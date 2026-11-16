@@ -30,3 +30,6 @@ savat.qosh(Mahsulot("limon", 25000, 8), 1)
 
 buyurtma = Buyurtma(ali, savat)
 print(buyurtma)
+
+
+
