@@ -1,1 +1,1 @@
-# Dasturchi_hayoti
+do'kon dasturi: mahsulotlar, savat, buyurtma
